@@ -61,14 +61,10 @@ function getBgKey(id: number): string {
 }
 
 
-export default async function CityWeatherPage({
+export default async function CityWeatherPage(props){
   params,
   searchParams,
-}: {
-    params: { city: string };
-    searchParams: { unit?: 'imperial' | 'metric' };
-  }
-  ) {
+}= props;
   const cityName = decodeURIComponent(params.city);
   const unit = searchParams.unit === 'imperial' ? 'imperial' : 'metric';
 
