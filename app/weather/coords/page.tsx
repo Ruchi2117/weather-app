@@ -9,7 +9,7 @@ interface WeatherData {
 }
 
 async function getWeatherByCoords(lat: number, lon: number): Promise<WeatherData> {
-  const apiKey = "1f2b30c5cb484e491b0d0ac9fd529f9b";
+  const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
   const [currentRes, forecastRes] = await Promise.all([
     fetch(

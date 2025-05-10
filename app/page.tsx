@@ -38,7 +38,7 @@ if (typeof window !== "undefined") {
 }
 
 interface City { name: string; country: string; timezone: string; highTemp?: number; lowTemp?: number; }
-const WEATHER_API_KEY = "1f2b30c5cb484e491b0d0ac9fd529f9b";
+const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 const WEATHER_API_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 export default function Home() {
@@ -74,7 +74,7 @@ export default function Home() {
   const fetchWeatherData = async (city: string) => {
     try {
       const res = await fetch(
-        `${WEATHER_API_BASE_URL}?q=${encodeURIComponent(city)}&appid=${WEATHER_API_KEY}&units=metric`
+        `${WEATHER_API_BASE_URL}?q=${encodeURIComponent(city)}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`
       );
       const data = await res.json();
       if (data?.main) return { high: data.main.temp_max, low: data.main.temp_min,raw: data,  };
@@ -213,14 +213,14 @@ export default function Home() {
   return (
     <main className={`min-h-screen p-6 relative font-sans transition-colors duration-300 bg-fixed bg-cover bg-center bg-no-repeat ${theme === 'light' ? "bg-gray-100" : "bg-gray-900"}`} style={{ backgroundImage: theme === 'light' ? "url('/images/weather/city.jpg')" : "url('/images/weather/night.jpg')" }}>
       {/* Top controls: location + theme toggle */}
-      <span className="absolute top-4 right-4 flex space-x-2">
+      <div className="absolute top-4 right-4 flex space-x-2">
         <button onClick={handleLocationClick} className="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">Your Location</button>
-      </span>
+      </div>
       {/* Title with icon */}
-      <span className="flex items-center justify-center mb-6 text-center space-x-2">
+      <div className="flex items-center justify-center mb-6 text-center space-x-2">
         <CloudSun size={32} className="text-yellow-500 dark:text-yellow-300" />
         <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">City Weather Explorer</h1>
-      </span>
+      </div>
 
       {/* Favorites */}
       <div className="flex flex-wrap justify-center mb-6 space-x-4">

@@ -15,7 +15,7 @@ async function getWeather(
   city: string,
   units: 'metric' | 'imperial'
 ): Promise<WeatherData> {
-  const apiKey = '1f2b30c5cb484e491b0d0ac9fd529f9b';
+  const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
   const [currentRes, forecastRes] = await Promise.all([
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
@@ -181,7 +181,7 @@ export default async function CityWeatherPage({
         <section className="max-w-md mx-auto bg-white bg-opacity-80 text-gray-800 p-6 rounded-lg shadow">
           <h2 className="text-xl font-semibold mb-2">5-Day Forecast</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {forecast.list.filter((_, i: number) => i % 8 === 0).map(item => (
+            {forecast.list.filter((_: any, i: number) => i % 8 === 0).map((item: any) => (
               <div
                 key={item.dt}
                 className="p-4 border rounded-lg bg-white bg-opacity-70"
