@@ -1,9 +1,5 @@
 # 🌤️ City Weather Explorer
 
-<p align="center">
-  <img src="public/images/weather/app_logo.png" alt="City Weather Explorer Logo" width="150">
-</p>
-
 City Weather Explorer is a sleek and intuitive web application that brings you real-time weather information from around the globe. Built with cutting-edge technologies like **Next.js 14**, **TypeScript**, and beautifully styled with **Tailwind CSS**, it offers a seamless and responsive experience across all your devices. Discover current weather conditions, plan your week with a detailed 5-day forecast, and even explore the weather in your immediate vicinity with geolocation support!
 
 ---
