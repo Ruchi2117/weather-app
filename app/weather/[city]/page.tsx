@@ -1,5 +1,10 @@
 import classNames from 'classnames';
 
+interface CityPageProps {
+  params: { city: string };
+  searchParams: { unit?: 'imperial' | 'metric' };
+}
+
 interface WeatherData {
   current: any;
   forecast: any;
@@ -61,10 +66,10 @@ function getBgKey(id: number): string {
 }
 
 
-export default async function CityWeatherPage(props){
+export default async function CityWeatherPage({
   params,
   searchParams,
-}= props;
+}: CityPageProps) {
   const cityName = decodeURIComponent(params.city);
   const unit = searchParams.unit === 'imperial' ? 'imperial' : 'metric';
 
@@ -195,3 +200,4 @@ export default async function CityWeatherPage(props){
     </main>
   );
 }
+
