@@ -1,9 +1,6 @@
 "use client";
 
 import '@/app/globals.css';
-// pages/_app.js
-// pages/_app.tsx
-//import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import type { NextComponentType } from 'next';
 
@@ -24,7 +21,7 @@ import { CloudSun } from 'lucide-react';
 import Link from "next/link";
 import { types, onSnapshot, applySnapshot, Instance } from "mobx-state-tree";
 
-// MST store definitions as before...
+// MST store definitions 
 const WeatherEntryModel = types.model({ city: types.string, timestamp: types.Date, weather: types.frozen() });
 const RootStore = types
   .model({ history: types.optional(types.array(WeatherEntryModel), []), favorites: types.optional(types.array(types.string), []) })
@@ -38,7 +35,7 @@ if (typeof window !== "undefined") {
 }
 
 interface City { name: string; country: string; timezone: string; highTemp?: number; lowTemp?: number; }
-const WEATHER_API_KEY = "1f2b30c5cb484e491b0d0ac9fd529f9b";
+const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 const WEATHER_API_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 export default function Home() {
@@ -320,11 +317,6 @@ export default function Home() {
                 <td className="px-4 py-2 border  dark:text-gray-100">{c.timezone}</td>
                 <td className="px-4 py-2 border  dark:text-gray-100">{c.highTemp != null ? `${c.highTemp}°C` : 'N/A'}</td>
                 <td className="px-4 py-2 border  dark:text-gray-100">{c.lowTemp != null ? `${c.lowTemp}°C` : 'N/A'}</td>
-                {/* <td>
-                  <button onClick={() => store.toggleFavorite(c.name)}>
-                    {store.isFavorite(c.name) ? '★' : '☆'}
-                  </button>
-                </td> */}
               </tr>
             ))}
           </tbody>
