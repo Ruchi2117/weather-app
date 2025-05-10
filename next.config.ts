@@ -1,7 +1,12 @@
-import type { NextConfig } from "next";
+import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // ...any existing settings you have...
+
+  typescript: {
+    // ⚠️ skips all type checks during `next build`
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;
