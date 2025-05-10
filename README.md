@@ -76,6 +76,18 @@ npm run dev
 
 -----
 
+⚠️ **Important Note: API Key Required for Core Pages**
+
+Please be aware that a valid OpenWeatherMap API key is essential for the core functionality of this application. Several key pages rely on this API key to fetch and display weather data. **If you do not configure your environment variables with a valid API key as described in the "Configure Environment Variables" section, the following pages will not function correctly:**
+
+**Pages That Require the API Key:**
+
+- `app/page.tsx`: This page handles the city search functionality and displays initial weather previews on the homepage. Without a valid API key, you will not be able to search for cities or see any weather information on the main page.
+- `app/weather/[city]/page.tsx`: This dynamic route displays detailed current weather information and the 5-day forecast for a specific city you select. Fetching this data is impossible without a correctly configured API key.
+- `app/weather/coords/page.tsx`: This page utilizes your browser's geolocation to fetch and display the weather for your current location. Accessing the OpenWeatherMap API with your coordinates requires a valid API key.
+
+**Ensure you have correctly set the `NEXT_PUBLIC_WEATHER_API_KEY` in your `.env.local` file to avoid issues with these core features.**
+
 ## 🗺️ Navigating the App: Routing Overview 🧭
 
 - `/`: Homepage – search cities and view global weather insights.
