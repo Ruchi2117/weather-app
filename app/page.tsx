@@ -71,7 +71,7 @@ export default function Home() {
   const fetchWeatherData = async (city: string) => {
     try {
       const res = await fetch(
-        `${WEATHER_API_BASE_URL}?q=${encodeURIComponent(city)}&appid=${WEATHER_API_KEY}&units=metric`
+        `${WEATHER_API_BASE_URL}?q=${encodeURIComponent(city)}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`
       );
       const data = await res.json();
       if (data?.main) return { high: data.main.temp_max, low: data.main.temp_min,raw: data,  };
